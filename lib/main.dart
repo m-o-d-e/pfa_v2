@@ -37,7 +37,8 @@ class _MyAppState extends State<MyApp> {
           '/signup': (context) => Signup(),
           '/home': (context) => HomePageWidget(),
 
-          '/dashboard': (context) => Dashboard(
+          ''
+              '/dashboard': (context) => Dashboard(
                 isDark: false,
               ),
         });
