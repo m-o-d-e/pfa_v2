@@ -23,6 +23,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: Colors.green, // the color of the app bar
           accentColor: Colors.red, // the color used for buttons, etc.
@@ -30,7 +31,7 @@ class _MyAppState extends State<MyApp> {
           scaffoldBackgroundColor:
               Colors.grey[200], // the background color of scaffold
         ),
-        initialRoute: '/signup',
+        initialRoute: '/home',
         routes: {
           //'/on': (context) => OnboardingScreen(),
           '/signup': (context) => Signup(),

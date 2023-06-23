@@ -27,6 +27,12 @@ class _NavBarState extends State<NavBar> {
     'Settings',
     'Account',
   ];
+  List<String> listurl = [
+    '/home',
+    '/dashboard',
+    '/Settings',
+    '/Account',
+  ];
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
@@ -57,7 +63,8 @@ class _NavBarState extends State<NavBar> {
             setState(() {
               currentIndex = index;
               HapticFeedback.lightImpact();
-              //Navigator.pushNamed(context, '/signup');
+
+              Navigator.pushNamed(context, listurl[index]);
             });
           },
           splashColor: Colors.transparent,

@@ -6,6 +6,7 @@ import 'package:iconify_flutter/icons/ic.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
 import 'package:iconify_flutter/icons/pajamas.dart';
 import 'chart_carousel.dart';
+import '../../widgets/nav_bar.dart';
 
 const Color primaryColor = Color(0xFF12BA6C);
 const Color secondaryColor = Color(0xFFDFF4EB);
@@ -23,6 +24,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: NavBar(),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
