@@ -174,9 +174,11 @@ bool get isAndroid => !kIsWeb && Platform.isAndroid;
 bool get isiOS => !kIsWeb && Platform.isIOS;
 bool get isWeb => kIsWeb;
 
-const kMobileWidthCutoff = 479.0;
+const kBreakpointSmall = 479.0;
+const kBreakpointMedium = 767.0;
+const kBreakpointLarge = 991.0;
 bool isMobileWidth(BuildContext context) =>
-    MediaQuery.of(context).size.width < kMobileWidthCutoff;
+    MediaQuery.of(context).size.width < kBreakpointSmall;
 bool responsiveVisibility({
   required BuildContext context,
   bool phone = true,
@@ -185,11 +187,11 @@ bool responsiveVisibility({
   bool desktop = true,
 }) {
   final width = MediaQuery.of(context).size.width;
-  if (width < kMobileWidthCutoff) {
+  if (width < kBreakpointSmall) {
     return phone;
-  } else if (width < 767) {
+  } else if (width < kBreakpointMedium) {
     return tablet;
-  } else if (width < 991) {
+  } else if (width < kBreakpointLarge) {
     return tabletLandscape;
   } else {
     return desktop;
@@ -214,12 +216,6 @@ extension IterableExt<T> on Iterable<T> {
       .values
       .toList();
 }
-
-//void setAppLanguage(BuildContext context, String language) =>
-//   MyApp.of(context).setLocale(language);
-
-//void setDarkModeSetting(BuildContext context, ThemeMode themeMode) =>
-//    MyApp.of(context).setThemeMode(themeMode);
 
 void showSnackbar(
   BuildContext context,
@@ -260,4 +256,23 @@ extension FFStringExt on String {
 
 extension ListFilterExt<T> on Iterable<T?> {
   List<T> get withoutNulls => where((s) => s != null).map((e) => e!).toList();
+}
+
+extension ListDivideExt<T extends Widget> on Iterable<T> {
+  Iterable<MapEntry<int, Widget>> get enumerate => toList().asMap().entries;
+
+  List<Widget> divide(Widget t) => isEmpty
+      ? []
+      : (enumerate.map((e) => [e.value, t]).expand((i) => i).toList()
+        ..removeLast());
+
+  List<T> around(T t) => toList()
+    ..insert(0, t)
+    ..add(t);
+
+  List<Widget> addToStart(Widget t) =>
+      enumerate.map((e) => e.value).toList()..insert(0, t);
+
+  List<Widget> addToEnd(Widget t) =>
+      enumerate.map((e) => e.value).toList()..add(t);
 }

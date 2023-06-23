@@ -7,6 +7,7 @@ import '/pages/sign_up/signup.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'utlis/framwork_utils.dart';
 import 'index.dart';
+import '/pages/add_p_a_g_e/add_p_a_g_e_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,6 +34,7 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: '/home',
         routes: {
+          '/add': (context) => AddPAGEWidget(),
           //'/on': (context) => OnboardingScreen(),
           '/signup': (context) => Signup(),
           '/home': (context) => HomePageWidget(),
