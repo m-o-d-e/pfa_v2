@@ -3,6 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:sol_flow/pages/dashboard/dashboard.dart';
+import '../../pages/add_p_a_g_e/add_p_a_g_e_widget.dart';
+import '../../pages/addsoil/addsoil_widget.dart';
+import '../../pages/profil/profil_widget.dart';
 import '../framwork_utils/flutter_flow_theme.dart';
 
 import '../../index.dart';
@@ -40,6 +44,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: '_initialize',
           path: '/',
           builder: (context, _) => HomePageWidget(),
+        ),
+        FFRoute(
+          name: 'addPAGE',
+          path: '/addPAGE',
+          builder: (context, params) => AddPAGEWidget(),
+        ),
+        FFRoute(
+          name: 'addSoil',
+          path: '/soil',
+          builder: (context, params) => AddsoilWidget(),
+        ),
+        FFRoute(
+          name: 'dashbord',
+          path: '/dashboard',
+          builder: (context, params) => Dashboard(isDark: false),
+        ),
+        FFRoute(
+          name: 'profil',
+          path: '/profil',
+          builder: (context, params) => ProfilWidget(),
         ),
         FFRoute(
           name: 'HomePage',
